@@ -10,7 +10,44 @@
     <header>
       <h1>Mergington High School</h1>
       <h2>Extracurricular Activities</h2>
+      <div class="user-menu">
+        <button id="user-icon" class="user-icon-btn" title="Login">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </button>
+        <div id="user-dropdown" class="user-dropdown hidden">
+          <div id="logged-in-menu" class="hidden">
+            <p><strong>Logged in as:</strong> <span id="username-display"></span></p>
+            <button id="logout-btn" class="dropdown-btn">Logout</button>
+          </div>
+          <div id="logged-out-menu">
+            <button id="login-btn" class="dropdown-btn">Login</button>
+          </div>
+        </div>
+      </div>
     </header>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Teacher Login</h3>
+        <form id="login-form">
+          <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" required />
+          </div>
+          <button type="submit">Login</button>
+          <div id="login-error" class="error-message hidden"></div>
+        </form>
+      </div>
+    </div>
 
     <main>
       <section id="activities-container">
@@ -23,6 +60,7 @@
 
       <section id="signup-container">
         <h3>Sign Up for an Activity</h3>
+        <p id="auth-notice" class="auth-notice hidden">Only teachers can register students. Please log in.</p>
         <form id="signup-form">
           <div class="form-group">
             <label for="email">Student Email:</label>
@@ -35,7 +73,7 @@
               <!-- Activity options will be loaded here -->
             </select>
           </div>
-          <button type="submit">Sign Up</button>
+          <button type="submit" id="signup-btn">Sign Up</button>
         </form>
         <div id="message" class="hidden"></div>
       </section>
